@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import './style.css'
 import Item from './item'
+import axios from 'axios'
+import Animation from './animation'
 
 class Demo extends Component {
     constructor(props) {
@@ -16,9 +18,13 @@ class Demo extends Component {
     //     console.log('componentWillMount - 组件将要挂载页面的时刻')
     // }
 
-    // componentDidMount() {
-    //     console.log('componentDidMount - 组件挂载完成')
-    // }
+    componentDidMount() {
+        // console.log('componentDidMount - 组件挂载完成')
+        axios.post('https://web-api.juejin.im/v3/web/wbbr/bgeda')
+            .then(res => {
+                console.log('res: ', res)
+            })
+    }
 
     // shouldComponentUpdate() {
     //     console.log('1 >>> shouldComponentUpdate')
@@ -55,6 +61,7 @@ class Demo extends Component {
                         })
                     }
                 </ul>
+                <Animation />
             </Fragment>
         )
     }
