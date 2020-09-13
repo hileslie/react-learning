@@ -8,15 +8,23 @@ class Item extends Component {
 
     // 组件第一次存在于dom中，函数不会被执行
     // 如果已经存在于dom中，函数才会被执行
-    UNSAFE_componentWillReceiveProps() {
-        console.log('child >>> componentWillReceiveProps')
+    // UNSAFE_componentWillReceiveProps() {
+    //     console.log('child >>> componentWillReceiveProps')
+    // }
+
+    // componentWillUnmount() {
+    //     console.log('child >>> componentWillUnmount')
+    // }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true
+        }
+        return false
     }
 
-    componentWillUnmount() {
-        console.log('child >>> componentWillUnmount')
-    }
-
-    render() { 
+    render() {
+        console.log(123)
         return ( 
             <li>
                 {this.props.name} - {this.props.age} - {this.props.content}

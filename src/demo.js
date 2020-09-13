@@ -12,29 +12,29 @@ class Demo extends Component {
         this.inputChange = this.inputChange.bind(this)
     }
 
-    UNSAFE_componentWillMount() {
-        console.log('componentWillMount - 组件将要挂载页面的时刻')
-    }
+    // UNSAFE_componentWillMount() {
+    //     console.log('componentWillMount - 组件将要挂载页面的时刻')
+    // }
 
-    componentDidMount() {
-        console.log('componentDidMount - 组件挂载完成')
-    }
+    // componentDidMount() {
+    //     console.log('componentDidMount - 组件挂载完成')
+    // }
 
-    shouldComponentUpdate() {
-        console.log('1 >>> shouldComponentUpdate')
-        return true
-    }
+    // shouldComponentUpdate() {
+    //     console.log('1 >>> shouldComponentUpdate')
+    //     return true
+    // }
 
-    UNSAFE_componentWillUpdate() {
-        console.log('2 >>> componentWillUpdate')
-    }
+    // UNSAFE_componentWillUpdate() {
+    //     console.log('2 >>> componentWillUpdate')
+    // }
 
-    componentDidUpdate() {
-        console.log('4 >>> componentDidUpdate')
-    }
+    // componentDidUpdate() {
+    //     console.log('4 >>> componentDidUpdate')
+    // }
 
     render () {
-        console.log('3 >>> render - 组件挂载中')
+        // console.log('3 >>> render - 组件挂载中')
         return (
             <Fragment>
                 <input
@@ -60,7 +60,6 @@ class Demo extends Component {
     }
 
     inputChange(e) {
-        console.log(e.target.value)
         this.setState({
             // inputVal: e.target.value
             inputVal: this.input.value

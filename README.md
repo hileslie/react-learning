@@ -34,3 +34,13 @@
         child >>> componentWillUnmount
         4 >>> componentDidUpdate
         ```
+- 如何利用生命周期，提升组件性能
+    - 子组件使用 `shouldComponentUpdate`
+    ```
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true
+        }
+        return false
+    }
+    ```
