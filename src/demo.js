@@ -3,6 +3,7 @@ import './style.css'
 import Item from './item'
 import axios from 'axios'
 import Animation from './animation'
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 class Demo extends Component {
     constructor(props) {
@@ -48,18 +49,28 @@ class Demo extends Component {
                     value={this.state.inputVal} onChange={this.inputChange} />
                 <button onClick={this.add.bind(this)}>增加</button>
                 <ul className="bg">
+                    <TransitionGroup>
                     {
                         this.state.list.map((item, index) => {
                             return (
+                                <CSSTransition
+                                    timeout={2000}   
+                                    classNames="leslie-text"
+                                    unmountOnExit
+                                    appear={true}
+                                    key={index+item}
+                                >
                                 <Item
                                     name="leslie"
                                     content={item}
                                     index={index}
                                     delItem={this.del.bind(this)}
                                     key={index+item}/>
+                                </CSSTransition>
                             )
                         })
                     }
+                    </TransitionGroup>
                 </ul>
                 <Animation />
             </Fragment>

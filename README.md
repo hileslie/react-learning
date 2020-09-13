@@ -1,6 +1,6 @@
 # React Demo
 
-## React
+## React16
 - react bind this 原因
 - 解决 react bind this 的3中方法
 - [...xxx] ES6拓展运算符运用
@@ -45,3 +45,4 @@
     }
     ```
 - easymock
+- 动画组件库 react-transition-group
