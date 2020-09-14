@@ -1,59 +1,30 @@
 import React, { Component } from 'react';
-import store from './store/index'
-import {changeInputAction, addItemAction, delItemAction, getTodoList, getMyListAction} from './store/actionCreators'
-import TodoListUI from './TodoListUI'
+import {connect} from 'react-redux'
+
 class TodoList extends Component {
     constructor(props) {
         super(props);
-        this.state = store.getState()
-        this.changeInput = this.changeInput.bind(this)
-        this.storeChange = this.storeChange.bind(this)
-        this.add = this.add.bind(this)
-        this.del = this.del.bind(this)
-        store.subscribe(this.storeChange)
     }
-
-    componentDidMount() {
-        // redux-thunk
-        // const action = getTodoList()
-        // store.dispatch(action)
-
-        // redux-saga
-        const action = getMyListAction();
-        store.dispatch(action)
-    }
-
     render() { 
         return ( 
-            <TodoListUI
-                inputVal={this.state.inputVal}
-                list={this.state.list}
-                changeInput={this.changeInput}
-                add={this.add}
-                del={this.del}
-            ></TodoListUI>
+            <div>
+                <div>
+                    <input value={this.props.inputVal}/>
+                    <button>提交</button>
+                </div>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                </ul>
+            </div>
          );
     }
+}
 
-    changeInput(e) {
-        const action = changeInputAction(e.target.value)
-        store.dispatch(action)
-    }
-
-    storeChange() {
-        this.setState(store.getState())
-    }
-
-    add () {
-        const action = addItemAction()
-        store.dispatch(action)
-    }
-
-    del(index) {
-        const action = delItemAction(index)
-        store.dispatch(action)
+const stateToProps = (state) => {
+    return {
+        inputVal: state.inputVal
     }
 }
  
-
-export default TodoList;
+export default connect(stateToProps, null)(TodoList);

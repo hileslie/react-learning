@@ -7,3 +7,4 @@
 - 无状态组件（只有交互，提升性能） =》 标准函数（方法） =》 返回JSX
 - Redux-thunk 中间件
 - Redux-saga 中间件
+- react-redux 插件
