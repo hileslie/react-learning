@@ -11,5 +11,13 @@ export default (state = defaultState, action) => {
         return newState
     }
 
+    if (action.type === 'addItem') {
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.list.push(newState.inputVal)
+        console.log(newState.list)
+        newState.inputVal = ''
+        return newState
+    }
+
     return state
 }

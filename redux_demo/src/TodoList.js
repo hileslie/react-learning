@@ -1,28 +1,58 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
-class TodoList extends Component {
-    render() { 
+const TodoList = (props) => {
+    let {inputVal, inputChange, add, list} = props
         return ( 
             <div>
                 <div>
                     <input
-                        value={this.props.inputVal}
-                        onChange={this.props.inputChange}/>
-                    <button>提交</button>
+                        value={inputVal}
+                        onChange={inputChange}/>
+                    <button
+                        onClick={add}
+                    >提交</button>
                 </div>
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
+                    {
+                        list.map((item, index) => {
+                            return (<li key={index}>{item}</li>)
+                        })
+                    }
                 </ul>
             </div>
-         );
-    }
+        );
 }
+
+// class TodoList extends Component {
+//     render() { 
+//         let {inputVal, inputChange, add, list} = this.props
+//         return ( 
+//             <div>
+//                 <div>
+//                     <input
+//                         value={inputVal}
+//                         onChange={inputChange}/>
+//                     <button
+//                         onClick={add}
+//                     >提交</button>
+//                 </div>
+//                 <ul>
+//                     {
+//                         list.map((item, index) => {
+//                             return (<li key={index}>{item}</li>)
+//                         })
+//                     }
+//                 </ul>
+//             </div>
+//          );
+//     }
+// }
 
 const stateToProps = (state) => {
     return {
-        inputVal: state.inputVal
+        inputVal: state.inputVal,
+        list: state.list
     }
 }
 
@@ -32,6 +62,13 @@ const dispatchToProps = (dispatch) => {
             let action = {
                 type: 'changeInput',
                 value: e.target.value
+            }
+            dispatch(action)
+        },
+
+        add() {
+            let action = {
+                type: 'addItem',
             }
             dispatch(action)
         }
