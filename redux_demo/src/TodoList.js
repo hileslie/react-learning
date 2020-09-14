@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store from './store/index'
-import {changeInputAction, addItemAction, delItemAction, getTodoList} from './store/actionCreators'
+import {changeInputAction, addItemAction, delItemAction, getTodoList, getMyListAction} from './store/actionCreators'
 import TodoListUI from './TodoListUI'
 class TodoList extends Component {
     constructor(props) {
@@ -14,7 +14,12 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        const action = getTodoList()
+        // redux-thunk
+        // const action = getTodoList()
+        // store.dispatch(action)
+
+        // redux-saga
+        const action = getMyListAction();
         store.dispatch(action)
     }
 
