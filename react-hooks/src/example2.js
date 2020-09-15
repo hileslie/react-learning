@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Example() {
     const [ age, setAge] = useState(18)
     const [ sex, setSex] = useState('男')
+    useEffect(() => {
+       console.log(`useEffect => ${age}`)
+    })
     return (
         <div>
             <p>数组 {age} -- {sex} </p>
