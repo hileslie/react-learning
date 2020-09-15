@@ -6,3 +6,4 @@
 - createContext
 - useContext
 - useReducer
+- useMemo
